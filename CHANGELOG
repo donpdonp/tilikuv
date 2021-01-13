@@ -1481,3 +1481,4 @@
 2021-01-13T00:11:38.874473796 connect command spawns irc goroutine
 2021-01-13T00:05:32.546937573 struct Main the things
 2021-01-12T19:17:16.973453768 rpc command verb match
+2021-01-12T18:58:47.601439691 add rpc
