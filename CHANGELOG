@@ -1479,3 +1479,4 @@
 2021-01-13T00:43:34.012314070 connect() and comm() in the right places
 2021-01-13T00:23:48.149018350 irc add_server
 2021-01-13T00:11:38.874473796 connect command spawns irc goroutine
+2021-01-13T00:05:32.546937573 struct Main the things
