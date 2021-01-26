@@ -1391,3 +1391,4 @@
 2021-01-26T16:39:55.776940848 a channel just for speaking to the matrix
 2021-01-26T00:46:53.119757588 break out db into a module
 2021-01-25T21:14:00.184266223 stop on irc read fail
+2021-01-25T21:07:06.310445459 !connect irc
