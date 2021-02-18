@@ -1317,3 +1317,4 @@
 2021-02-17T17:52:09.441036662 more ptr debug
 2021-02-17T17:35:46.158524162 wrong status
 2021-02-17T17:31:58.343209042 ircnet addr dump
+2021-02-17T16:46:50.099158060 move irc object from string to a struct with more context
