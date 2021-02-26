@@ -1278,3 +1278,4 @@
 2021-02-25T19:23:33.693488156 join irc channels
 2021-02-25T19:03:23.768308308 sync_rooms loads rooms
 2021-02-25T18:59:00.371578972 expand irc msgs from PrivMsg to a Sum Type
+2021-02-25T18:51:27.917364560 sync_rooms
