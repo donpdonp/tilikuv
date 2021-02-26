@@ -1277,3 +1277,4 @@
 2021-02-26T16:30:01.616208399 json2 is fixed
 2021-02-25T19:23:33.693488156 join irc channels
 2021-02-25T19:03:23.768308308 sync_rooms loads rooms
+2021-02-25T18:59:00.371578972 expand irc msgs from PrivMsg to a Sum Type
