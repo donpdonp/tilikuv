@@ -1273,3 +1273,4 @@
 2021-02-27T18:13:34.555156868 matrix.room_alias
 2021-02-27T17:56:14.486313431 move join/find_channel into irc.Network
 2021-02-26T17:15:52.878721769 differentiate irc and matrix rooms
+2021-02-26T16:38:35.379188351 irc privmsg one_line()
