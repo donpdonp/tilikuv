@@ -1218,3 +1218,4 @@
 2021-03-10T20:05:08.727877335 irc join msg
 2021-03-10T20:01:20.494957443 store only id
 2021-03-10T19:10:46.814510412 use join_request enum result
+2021-03-10T18:47:05.244933117 use enum as return value
