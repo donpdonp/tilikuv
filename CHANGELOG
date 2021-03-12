@@ -1199,3 +1199,4 @@
 2021-03-11T18:37:12.452467571 out_chan stat
 2021-03-11T18:24:42.252353849 matrix.joined_rooms_sync()
 2021-03-11T18:14:30.458298163 listen_out weird blank
+2021-03-11T18:10:29.684759488 let sync_rooms do the joining
