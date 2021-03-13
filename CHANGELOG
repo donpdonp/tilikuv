@@ -1179,3 +1179,4 @@
 2021-03-12T19:18:24.276895968 avoid joined_rooms_sync -> sync_rooms -> joined_rooms_sync
 2021-03-12T19:07:46.784714002 extra out
 2021-03-12T19:02:36.597844681 joined_rooms.pointers()
+2021-03-12T18:58:38.845914518 matrix.joined_rooms
