@@ -1155,3 +1155,4 @@
 2021-03-17T19:09:42.316250731 joined_rooms err dialback
 2021-03-17T19:08:19.294900531 joined_rooms err
 2021-03-17T19:06:24.371203226 sql stuff
+2021-03-17T19:03:40.900648532 use joined_rooms list as keys to load full db rooms
