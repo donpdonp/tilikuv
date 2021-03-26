@@ -1120,3 +1120,4 @@
 2021-03-25T19:30:52.758798541 matrix.Rooms.str()
 2021-03-25T19:23:21.851193514 print roomlist with one_line()
 2021-03-25T19:17:10.726829620 irc connect fail detail
+2021-03-25T19:07:57.476411236 irc net connect admin msg /2
