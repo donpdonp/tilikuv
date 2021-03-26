@@ -1118,3 +1118,4 @@
 2021-03-26T17:04:19.576909095 show the IP on appsrv msgs
 2021-03-25T19:36:05.428008408 listen_out output tweak
 2021-03-25T19:30:52.758798541 matrix.Rooms.str()
+2021-03-25T19:23:21.851193514 print roomlist with one_line()
