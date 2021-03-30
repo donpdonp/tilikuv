@@ -1100,3 +1100,4 @@
 2021-03-29T18:19:03.334421740 remove leading :
 2021-03-29T18:12:25.153094946 hardcode name mangling for now
 2021-03-29T18:05:50.946798109 signal mainloop on irc disconnect
+2021-03-29T18:01:32.058921507 implement user_id spec
