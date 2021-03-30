@@ -1099,3 +1099,4 @@
 2021-03-30T17:17:02.168029102 PONG works fine
 2021-03-29T18:19:03.334421740 remove leading :
 2021-03-29T18:12:25.153094946 hardcode name mangling for now
+2021-03-29T18:05:50.946798109 signal mainloop on irc disconnect
