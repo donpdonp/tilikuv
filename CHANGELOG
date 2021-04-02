@@ -1091,3 +1091,4 @@
 2021-04-02T00:10:16.136824453 keep a queue of outbound msgs
 2021-04-01T21:57:06.931010249 go main.listen_out() works when Main{} is on heap
 2021-04-01T19:26:52.655574644 go on heap allocation struct methods only!
+2021-04-01T18:55:04.683511290 great Chat refoactor
