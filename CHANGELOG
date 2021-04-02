@@ -1088,3 +1088,4 @@
 2021-04-02T00:38:46.312324127 bring user registration back up in the main loop
 2021-04-02T00:27:25.348323216 use the queue to retain msg for retransmission
 2021-04-02T00:13:55.716630546 see the queue fill
+2021-04-02T00:10:16.136824453 keep a queue of outbound msgs
