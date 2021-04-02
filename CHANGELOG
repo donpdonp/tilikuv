@@ -1083,3 +1083,4 @@
 2021-04-02T18:00:23.164551394 add chat.queue mgmt bits and a cleaner timout
 2021-04-02T17:33:01.611982468 print matrix err
 2021-04-02T17:23:35.734131839 admin_say new matrix user
+2021-04-02T00:46:38.863869291 trade deadlock for infinite loop
