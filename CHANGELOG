@@ -1085,3 +1085,4 @@
 2021-04-02T17:23:35.734131839 admin_say new matrix user
 2021-04-02T00:46:38.863869291 trade deadlock for infinite loop
 2021-04-02T00:41:41.946798692 yup, deadlock
+2021-04-02T00:38:46.312324127 bring user registration back up in the main loop
