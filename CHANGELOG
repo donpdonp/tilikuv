@@ -1082,3 +1082,4 @@
 2021-04-02T18:06:16.040354741 announce delete
 2021-04-02T18:00:23.164551394 add chat.queue mgmt bits and a cleaner timout
 2021-04-02T17:33:01.611982468 print matrix err
+2021-04-02T17:23:35.734131839 admin_say new matrix user
