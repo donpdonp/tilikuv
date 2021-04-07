@@ -1047,3 +1047,4 @@
 2021-04-07T16:16:43.909989733 ptr/struct/copy management/2
 2021-04-07T16:14:35.056023296 ptr/struct/copy management
 2021-04-07T16:07:42.722420060 track down the ghost copy
+2021-04-06T18:40:41.884060567 oof, crash
