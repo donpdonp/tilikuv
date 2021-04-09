@@ -1033,3 +1033,4 @@
 2021-04-09T17:07:37.609969547 net.http header change (hack http.v pub parse_response)
 2021-04-09T15:59:24.827862210 a little extra output/2
 2021-04-09T15:58:20.725854271 a little extra output
+2021-04-09T15:52:39.780439376 chat.MakeIrcUser moves malloc into main thread (avoids VBUG)
