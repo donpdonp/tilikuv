@@ -1032,3 +1032,4 @@
 2021-04-10T16:45:51.866312906 cli is hardly used. todo: roll into app
 2021-04-09T17:07:37.609969547 net.http header change (hack http.v pub parse_response)
 2021-04-09T15:59:24.827862210 a little extra output/2
+2021-04-09T15:58:20.725854271 a little extra output
