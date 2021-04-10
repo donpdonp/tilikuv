@@ -1030,3 +1030,4 @@
 2021-04-12T15:38:49.783082489 ghosts dump/2
 2021-04-12T15:36:46.300612067 ghosts dump
 2021-04-10T16:45:51.866312906 cli is hardly used. todo: roll into app
+2021-04-09T17:07:37.609969547 net.http header change (hack http.v pub parse_response)
