@@ -1002,3 +1002,4 @@
 2021-04-12T22:48:02.370510334 log.Log looks lame
 2021-04-12T22:39:41.463329463 really need a logger here
 2021-04-12T22:38:44.888966762 sql seems reliable
+2021-04-12T20:40:17.971555410 container structs should use []&Thing
