@@ -970,3 +970,4 @@
 2021-04-17T18:01:20.884211558 sync_matrix_rooms()
 2021-04-17T17:35:37.428298162 error handling take 2, return direct value, match err
 2021-04-15T22:24:16.965051949 check out this optional+sumtype return style
+2021-04-15T17:23:11.192842033 matrix.room_create()
