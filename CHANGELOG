@@ -971,3 +971,4 @@
 2021-04-17T17:35:37.428298162 error handling take 2, return direct value, match err
 2021-04-15T22:24:16.965051949 check out this optional+sumtype return style
 2021-04-15T17:23:11.192842033 matrix.room_create()
+2021-04-15T17:06:19.769524420 announce matrix room leave
