@@ -965,3 +965,4 @@
 2021-04-17T19:35:19.938637776 process chat queue after join 200
 2021-04-17T19:09:07.020096081 reprocess the queue for a specific user
 2021-04-17T18:59:56.026664971 join the room on error not in room
+2021-04-17T18:49:08.601163046 rubygoldberg makeuser, joinroom
