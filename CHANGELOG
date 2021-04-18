@@ -967,3 +967,4 @@
 2021-04-17T18:59:56.026664971 join the room on error not in room
 2021-04-17T18:49:08.601163046 rubygoldberg makeuser, joinroom
 2021-04-17T18:08:44.365337774 db tweaks
+2021-04-17T18:01:20.884211558 sync_matrix_rooms()
