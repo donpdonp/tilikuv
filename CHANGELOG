@@ -954,3 +954,4 @@
 2021-04-20T15:55:33.958001558 add a colon
 2021-04-20T15:47:08.686227024 regex name match rework
 2021-04-19T19:01:04.112557120 extra output
+2021-04-19T18:59:39.508297706 search db rows first when looking for irc channel
