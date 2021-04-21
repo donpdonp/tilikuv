@@ -943,3 +943,4 @@
 2021-04-21T16:05:33.642860843 matching_irc_channel rework, again
 2021-04-21T15:49:56.591982634 alias lookup
 2021-04-20T18:01:19.842995966 add dash to irc.is_room
+2021-04-20T17:49:00.671220673 no need for room_alias in sync_matrix_rooms
