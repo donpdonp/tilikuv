@@ -945,3 +945,4 @@
 2021-04-20T18:01:19.842995966 add dash to irc.is_room
 2021-04-20T17:49:00.671220673 no need for room_alias in sync_matrix_rooms
 2021-04-20T17:42:50.994681355 try room_state undo
+2021-04-20T17:21:53.327382651 try room_state
