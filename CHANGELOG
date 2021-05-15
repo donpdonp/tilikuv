@@ -890,3 +890,4 @@
 2021-05-18T18:10:09.239670323 leave the protocol in the msg
 2021-05-18T18:07:46.077666447 have matrix module detect ctcp payload (hack)
 2021-05-17T22:14:27.091702829 handle CTCP action
+2021-05-14T19:46:52.957637339 appsvc close()
