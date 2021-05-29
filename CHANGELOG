@@ -860,3 +860,4 @@
 2021-05-28T19:52:57.121694786 connect in irc help msg
 2021-05-28T19:52:11.403948048 hangup/cleanup ircnet on deletion
 2021-05-28T19:25:36.574977048 !irc connect
+2021-05-28T19:16:03.835392606 signal irc connected at 376 End of MOTD
