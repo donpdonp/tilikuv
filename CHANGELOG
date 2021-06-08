@@ -785,3 +785,4 @@
 2021-06-08T16:55:14.449572974 irc sync on join
 2021-06-07T21:33:54.484196105 actuall set .connected
 2021-06-07T21:30:44.838797772 all the Network.str()
+2021-06-07T21:24:55.607060639 Connect already happens on 376
