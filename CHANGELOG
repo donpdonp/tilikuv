@@ -780,3 +780,4 @@
 2021-06-08T17:44:03.528993374 sql fix
 2021-06-08T17:40:15.354047538 up the sql logging
 2021-06-08T17:08:50.517016154 always add channel, join if connected to ircnet
+2021-06-08T17:01:15.102542592 Matrix.Room str()/2
