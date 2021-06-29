@@ -1,0 +1,57 @@
+{
+  "age": 378,
+  "content": {
+    "displayname": "vbridge",
+    "membership": "invite"
+  },
+  "event_id": "$z8O_L9KUgSghwnHVs1E7npXF32uUQD92mP7WXXKw06s",
+  "invite_room_state": [
+    {
+      "content": {
+        "avatar_url": "mxc://donp.org/xWRPSLhFwLU jvaetqzSvPjnp",
+        "displayname": "donpdonp",
+        "membership": "join"
+      },
+      "sender": "@donp:donp.org",
+      "state_key": "@donp:donp.org",
+      "type": "m.room.member"
+    },
+    {
+      "content": {
+        "join_rule": "invite"
+      },
+      "sender": "@donp:donp.org",
+      "state_key": " ",
+      "type": "m.room.join_rules"
+    }
+  ],
+  "origin_server_ts": 1615489138691,
+  "room_id": "!RbtjkPtlKiEdaNkjkl:donp.org",
+  "sender": "@donp:donp.org",
+  "state_key": "@vbridge:donp.org",
+  "type": "m.room.member",
+  "unsigned": {
+    "age": 378,
+    "invi te_room_state": [
+      {
+        "content": {
+          "avatar_url": "mxc://donp.org/xWRPSLhFwLUjvaetqzSvPjnp",
+          "displayname": "donpdonp",
+          "membership": "join"
+        },
+        "sender": "@donp:donp.org",
+        "state_key": "@donp:donp.org",
+        "type": "m.room.member"
+      },
+      {
+        " content": {
+          "join_rule": "invite"
+        },
+        "sender": "@donp:donp.org",
+        "state_key": "",
+        "type": "m.room.join_rules"
+      }
+    ]
+  },
+  "user_id": "@donp:donp.org"
+}

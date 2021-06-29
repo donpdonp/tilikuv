@@ -1,0 +1,14 @@
+!irc join #pdxsoz
+!bridge add pdxsoz:donp.org #pdxsoz
+
+!irc join #pdxsoz #pdxsoz:donp.org
+!irc join channel:#pdxboz
+
+!bridge #poif:Libera.chat
+
+!join #abc
+joining #abc on Libera.chat
+creating #abc:donp.org
+bridging #abc:Libera.chat to #abc:donp.org
+joining #abc:donp.org
+

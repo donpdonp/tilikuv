@@ -1,0 +1,4 @@
+module msg
+
+struct IrcMsg {
+}

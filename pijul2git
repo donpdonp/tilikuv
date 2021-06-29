@@ -1,0 +1,18 @@
+AWK='$0 ~ /Date/  {DATE = $2"T"$3; getline; getline; gsub(/^ +/, "", $0); printf "echo '\''%s %s'\'' >> CHANGELOG ; GIT_AUTHOR_DATE=%s GIT_COMMITTER_DATE=%s git commit -a -m \"%s\"\n", DATE, $0, DATE, DATE, $0 }'
+#pijul log|awk -e "$AWK" > out.sh
+pijul log|mawk "$AWK" > out.sh
+rm -rf .git
+git init
+git remote add github git@github.com:donpdonp/vbridge.git
+git add .
+touch CHANGELOG
+git add CHANGELOG
+. out.sh
+rm out.sh
+sort -r CHANGELOG | uniq > .changelog
+mv .changelog CHANGELOG
+git add CHANGELOG
+git commit -m "CHANGELOG fixup"
+echo DONE
+git remote -v
+echo $ git push -f github main

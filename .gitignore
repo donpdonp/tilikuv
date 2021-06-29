@@ -1,0 +1,9 @@
+registration.yaml
+/*.v
+/.ignore
+/.pijul
+/out.sh
+/bin
+/config.json
+/db.sqlite
+src/cache/

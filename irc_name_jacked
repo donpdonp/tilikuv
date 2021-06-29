@@ -1,0 +1,25 @@
+sock 7fd25c022028 :dp010101!~donp@c-24-20-50-79.hsd1.or.comcast.net JOIN #zrobo
+Libera.Chat/irc.libera.chat:6667 vbridge ghost 7fd25c022010: dp010101 JOINed #zrobo
+<- &Libera.Chat/irc.libera.chat:6667 vbridge: #zrobo dp010101!~donp@c-24-20-50-79.hsd1.or.comcast.net ping
+sqlite: select * from bridge_rooms where left = "#zrobo:Libera.Chat"; [0 rows. status 101]
+sqlite: select * from bridge_rooms where right = "#zrobo:Libera.Chat"; [1 rows. status 101]
+bridge.matching room found right #zrobo:Libera.Chat -> left #zrobo:donp.org
+regex_self_replace (.*)_irc dp010101 => dp010101_irc
+{"displayname":"dp010101"}
+PUT https://donp.org/_matrix/client/r0/profile/@dp010101_irc:donp.org/displayname?user_id=@dp010101_irc:donp.org {"displayname":"dp010101"} => [403] {"errcode":"M_FORBIDDEN","error":"Application service has not re
+gistered this user"}
+user_displayname status 403 {"errcode":"M_FORBIDDEN","error":"Application service has not registered this user"}
+chat.say [alRKK/1] >matrix< name: "@dp010101_irc:donp.org" room: "!tzLaggYfOCgkUzVvQJ:donp.org" msg: "ping"
+process_out [alRKK/1] >matrix< name: "@dp010101_irc:donp.org" room: "!tzLaggYfOCgkUzVvQJ:donp.org" msg: "ping"
+PUT https://donp.org/_matrix/client/r0/rooms/!tzLaggYfOCgkUzVvQJ:donp.org/send/m.room.message/BHqkBt?user_id=@dp010101_irc:donp.org {"msgtype":"m.text","body":"ping"} => [403] {"errcode":"M_FORBIDDEN","error":"App
+lication service has not registered this user"}
+regex_self_replace (.*)|mv dp010101_irc => dp010101_irc|mv
+POST https://donp.org/_matrix/client/r0/register {"username":"dp010101_irc","type":"m.login.application_service"} => [200] {"user_id":"@dp010101_irc:donp.org","home_server":"donp.org","access_token":"syt_ZHAwMTAxM
+DFfaXJj_SVaibSInsMnFKTnahwxw_3pPSQE","device_id":"VZXVLWGCKC"}
+{"displayname":"dp010101_irc|mv"}
+PUT https://donp.org/_matrix/client/r0/profile/@dp010101_irc:donp.org/displayname?user_id=@dp010101_irc:donp.org {"displayname":"dp010101_irc|mv"} => [200] {}
+user_displayname status 200 {}
+admin_say: registered @dp010101_irc:donp.org (dp010101_irc|mv)
+chat.say [pibKq/2] >matrix< name: "" room: "!skrSQKVfbGzJYBAjSp:donp.org" msg: "registered @dp010101_irc:donp.org (dp010101_irc|mv)"
+process_out_user looking for @dp010101_irc:donp.org
+process_out_user found @dp010101_irc:donp.org alRKK 0/1
