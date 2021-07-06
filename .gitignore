@@ -3,6 +3,7 @@ registration.yaml
 /.ignore
 /.pijul
 /out.sh
+/log
 /bin
 /config.json
 /db.sqlite
