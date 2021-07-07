@@ -311,7 +311,7 @@ fn (mut self Main) as_do(cmd appsvc.Command) {
 										'm.image' {
 											// {"body":"IMG_20210704_154920.jpg","info":{"h":768,"mimetype":"image\/jpeg","size":163090,"w":1024},"msgtype":"m.image","url":"mxc:\/\/donp.org\/DBKlXYNItaxXzLDEgJwNdKBF"}
 											media_url := self.matrix.mxc_to_url(c['url'].str())
-											'$media_url'
+											util.ctcp_encode('ACTION', 'uploaded $media_url')
 										}
 										else {
 											'unknown matrix msgtype ${c['msgtype']}'
