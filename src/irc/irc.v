@@ -298,9 +298,11 @@ pub fn (self &IrcActor) comm(mut puppet Puppet) {
 			} else {
 				println('$puppet.network $puppet.nick comm() TCP closed $err')
 				puppet.hangup()
+				println('$puppet.nick comm() pushing Disconnect')
 				self.cin <- Payload(Disconnect{
 					puppet: puppet
 				})
+				println('$puppet.nick comm() pushing break')
 				break
 			}
 			if puppet.stop {
