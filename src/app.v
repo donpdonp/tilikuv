@@ -302,9 +302,19 @@ fn (mut self Main) as_do(cmd appsvc.Command) {
 								if room := bridge.matching_room(alias_room.name, mut self.db) {
 									// repeat in irc
 									saybody := match c['msgtype'].str() {
-										'm.text' { body }
-										'm.emote' { util.ctcp_encode('ACTION', body) }
-										else { 'unknown matrix msgtype ${c['msgtype']}' }
+										'm.text' {
+											body
+										}
+										'm.emote' {
+											util.ctcp_encode('ACTION', body)
+										}
+										'm.image' {
+											println(c)
+											'm.image handling not available'
+										}
+										else {
+											'unknown matrix msgtype ${c['msgtype']}'
+										}
 									}
 									room_parts := room.split(':')
 									sayparts := saybody.split('\n')
