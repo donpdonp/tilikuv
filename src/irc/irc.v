@@ -303,7 +303,6 @@ pub fn (self &IrcActor) comm(mut puppet Puppet) {
 				payload := Payload(Disconnect{
 					puppet: puppet
 				})
-				println('irc.cin $self.cin.len qlen')
 				match self.cin.try_push(payload) {
 					.success {}
 					.not_ready { println('WARNING irc.cin channel not ready. channel len $self.cin.len') }

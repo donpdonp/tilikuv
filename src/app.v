@@ -190,6 +190,8 @@ fn (mut self Main) irc_do(irc_m irc.Payload) {
 			user_id := self.name_convert(.irc, irc_m.puppet.nick)
 			msg := '$irc_m.puppet.nick disconnected from $irc_m.puppet.network.hostname use !irc connect'
 			self.matrix_say(user_id, msg)
+			mut puppet := self.irc.puppets.by_nick(irc_m.puppet.nick) or { return } // mut hack
+			puppet.dial()
 		}
 		irc.Joined {
 			user_id := self.name_convert(.irc, irc_m.puppet.nick)
