@@ -586,6 +586,7 @@ pub fn (mut self Puppet) hangup() {
 		self.sock.close() or { println('$self.nick sock.close $err') }
 	}
 	self.state = ConnState.disconnected
+	self.channels.channels.clear()
 }
 
 pub fn (self Puppet) str() string {
