@@ -307,6 +307,7 @@ pub fn (self &IrcActor) comm(mut puppet Puppet) {
 				break
 			}
 		}
+		println('$puppet.nick comm() stopped')
 	} else {
 		println('WARNING: $puppet.nick comm() called with missing socket')
 	}
