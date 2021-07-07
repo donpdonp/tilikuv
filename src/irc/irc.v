@@ -234,10 +234,10 @@ pub fn (mut self Puppet) dial() {
 	} else {
 		self.sock = dial(self.network.hostname, self.nick)
 		if self.sock is net.TcpConn {
-			println('$self.nick dial is connected')
+			println('$self.nick dial() connected')
 			self.state = .connected
 		} else {
-			println('$self.nick dial failed')
+			println('$self.nick dial() failed')
 		}
 	}
 }
