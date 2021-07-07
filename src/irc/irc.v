@@ -207,6 +207,7 @@ pub fn (mut self IrcActor) connect_all() {
 		mut n_ircnet := *ircnet // vbug
 		ghost := self.puppets.by_net_nick(n_ircnet, n_ircnet.nick) or {
 			mut n_ghost := self.new_ghost(mut n_ircnet, n_ircnet.nick)
+			self.connect(mut n_ghost)
 			self.puppets.add(mut n_ghost)
 		}
 		mut g_ghost := *ghost // vbug
@@ -264,14 +265,17 @@ pub fn (mut self IrcActor) new_ghost(mut ircnet Network, nick string) &Puppet {
 		nick: nick
 		network: ircnet
 	}
+	return puppet
+}
+
+pub fn (mut self IrcActor) connect(mut puppet Puppet) {
 	puppet.dial()
 	if puppet.sock is net.TcpConn {
 		go self.comm(mut puppet)
 		puppet.signin()
 	} else {
-		println('WARNING: puppet for $nick added, sock connection failed')
+		println('WARNING: sock connection failed for $puppet')
 	}
-	return puppet
 }
 
 pub fn (mut self Puppet) signin() {
