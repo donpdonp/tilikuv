@@ -309,8 +309,9 @@ fn (mut self Main) as_do(cmd appsvc.Command) {
 											util.ctcp_encode('ACTION', body)
 										}
 										'm.image' {
-											println(c)
-											'm.image handling not available'
+											// {"body":"IMG_20210704_154920.jpg","info":{"h":768,"mimetype":"image\/jpeg","size":163090,"w":1024},"msgtype":"m.image","url":"mxc:\/\/donp.org\/DBKlXYNItaxXzLDEgJwNdKBF"}
+											media_url := self.matrix.mxc_to_url(c['url'].str())
+											'$media_url'
 										}
 										else {
 											'unknown matrix msgtype ${c['msgtype']}'

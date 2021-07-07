@@ -135,6 +135,27 @@ pub fn rooms_contains(rooms []&Room, looking Room) bool {
 pub fn (mut self Actor) listen() {
 }
 
+pub fn (mut self Actor) mxc_to_url(mxc string) string {
+	servername, mediaid := mxc_split(mxc)
+	url := 'https://$self.host/_matrix/media/r0/download/$servername/$mediaid'
+	return url
+}
+
+pub fn mxc_split(mxc string) (string, string) {
+	// "mxc:\/\/donp.org\/DBKlXYNItaxXzLDEgJwNdKBF"
+	mxc_regex := r'mxc://([^/]+)/([^/]+)'
+	mut re := regex.regex_opt(mxc_regex) or { panic(err) }
+	re.match_string(mxc)
+	mut parts := []string{}
+	for g_index := 0; g_index < re.group_count; g_index++ {
+		start, end := re.get_group_bounds_by_id(g_index)
+		if start >= 0 {
+			parts << mxc[start..end]
+		}
+	}
+	return parts[0], parts[1]
+}
+
 pub fn (mut self Actor) try_pause() {
 	duration := time.now() - self.last_say
 	if duration.milliseconds() < 100 {

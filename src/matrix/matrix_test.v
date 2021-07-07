@@ -35,3 +35,10 @@ fn test_invite_by() {
 		assert false
 	}
 }
+
+fn test_mxn_split() {
+  mxc_url := "mxc://donp.org/DBKlXYNItaxXzLDEgJwNdKB"
+  server, id := mxc_split(mxc_url)
+  assert server == 'donp.org'
+  assert id == 'DBKlXYNItaxXzLDEgJwNdKB'
+}
