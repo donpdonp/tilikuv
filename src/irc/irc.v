@@ -103,7 +103,9 @@ pub mut:
 }
 
 pub fn setup() &IrcActor {
-	actor := &IrcActor{}
+	actor := &IrcActor{
+		cin: chan Payload{cap: 100}
+	}
 	return actor
 }
 
