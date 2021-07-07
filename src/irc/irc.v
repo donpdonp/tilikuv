@@ -300,11 +300,17 @@ pub fn (self &IrcActor) comm(mut puppet Puppet) {
 			} else {
 				println('$puppet.network $puppet.nick comm() TCP closed $err')
 				puppet.hangup()
-				println('$puppet.nick comm() pushing Disconnect')
-				self.cin <- Payload(Disconnect{
+				payload := Payload(Disconnect{
 					puppet: puppet
 				})
-				println('$puppet.nick comm() pushing break')
+				println('irc.cin $self.cin.len qlen')
+				match self.cin.try_push(payload) {
+					.success {}
+					.not_ready { println('WARNING irc.cin channel not ready. channel len $self.cin.len') }
+					.closed {}
+				}
+
+				// self.cin <-  payload
 				break
 			}
 			if puppet.stop {
