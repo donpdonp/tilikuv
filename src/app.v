@@ -414,8 +414,8 @@ fn (mut self Main) command_matrix(system chat.System, network string, room_id st
 			self.matrix_status(system, network, room_id)
 		}
 		'join' {
-			if parts.len > 1 {
-				room := parts[1]
+			if parts.len > 2 {
+				room := parts[2]
 				mut msg := ''
 				if self.irc.is_room(room) {
 				} else if self.matrix.is_room(room) {
@@ -451,8 +451,8 @@ fn (mut self Main) command_matrix(system chat.System, network string, room_id st
 			}
 		}
 		'leave' {
-			if parts.len > 1 {
-				room := parts[1]
+			if parts.len > 2 {
+				room := parts[2]
 				mut msg := ''
 				if self.irc.is_room(room) {
 					self.leave_request(chat.System.irc, network, room)
