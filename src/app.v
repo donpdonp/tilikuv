@@ -344,8 +344,7 @@ fn (mut self Main) as_do(cmd appsvc.Command) {
 fn (mut self Main) media_announcement(c map[string]json2.Any) string {
 	// {"body":"IMG_20210704_154920.jpg","info":{"h":768,"mimetype":"image\/jpeg","size":163090,"w":1024},"msgtype":"m.image","url":"mxc:\/\/donp.org\/DBKlXYNItaxXzLDEgJwNdKBF"}
 	media_url := self.matrix.mxc_to_url(c['url'].str())
-	util.ctcp_encode('ACTION', 'uploaded $media_url')
-	return ''
+	return util.ctcp_encode('ACTION', 'uploaded $media_url')
 }
 
 fn (mut self Main) command(system chat.System, network string, name string, room_id string, message string) {
