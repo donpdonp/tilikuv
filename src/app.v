@@ -74,7 +74,7 @@ fn (mut self Main) mainloop() {
 			chat_payload := <-self.chat.cin {
 				self.chat_do(chat_payload)
 			}
-			> 60 * time.minute {
+			60 * time.minute {
 				println('$time.now()')
 			}
 		}
@@ -711,7 +711,7 @@ fn (mut self Main) listen_out() {
 			outmsg := <-self.chat.out {
 				self.process_out(outmsg)
 			}
-			> 1 * time.minute {
+			1 * time.minute {
 				if next_id := self.chat.queue.next_id() {
 					println('listen_out timed out, found a msg.')
 					self.process_out(next_id)

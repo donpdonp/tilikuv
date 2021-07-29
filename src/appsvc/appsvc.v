@@ -26,18 +26,18 @@ pub fn setup(config setup.Config) &AppsvcActor {
 }
 
 pub fn (mut self AppsvcActor) listen() {
-	mut l := net.listen_tcp(self.http_port) or {
+	mut l := net.listen_tcp(net.AddrFamily.ip, ":$self.http_port") or {
 		println('error opening appsvc port $self.http_port')
 		return
 	}
 	println('appsvc listening $self.http_port')
 	for {
 		mut conn := l.accept() or { panic('accept() failed: $err') }
-		peer_ip := conn.peer_ip() or { err }
+		peer_ip := conn.peer_ip() or { err.msg }
 		mut reader := io.new_buffered_reader(reader: conn)
 		header_lines := read_headerlines(mut reader)
 		if header_lines.len > 0 {
-			response := http.parse_response(header_lines.join('\n'))
+			response := http.parse_response(header_lines.join('\n')) or { break }
 			println('<- $peer_ip ${header_lines[0]}')
 			if response.header.contains_custom('Content-Length') {
 				self.process_request(response.header, mut reader)

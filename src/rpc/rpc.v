@@ -31,7 +31,7 @@ pub fn init(config setup.Config) &Actor {
 }
 
 pub fn (mut self Actor) listen() {
-	mut l := net.listen_tcp(self.rpc_port) or {
+	mut l := net.listen_tcp(net.AddrFamily.ip, ":$self.rpc_port") or {
 		println('error opening rpc port')
 		return
 	}
