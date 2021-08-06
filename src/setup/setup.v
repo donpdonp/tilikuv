@@ -10,8 +10,8 @@ pub:
 	matrix_regex string
 	irc_regex    string
 	as_token     string = 'fixme'
-	as_port      int    = 9090
-	rpc_port     int    = 8099
+	as_port      string = '127.0.0.1:9010'
+	rpc_port     string = '127.0.0.1:9011'
 	admin_room   string
 }
 

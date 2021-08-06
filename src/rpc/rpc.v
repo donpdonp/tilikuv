@@ -9,7 +9,7 @@ import matrix
 struct Actor {
 pub:
 	out      chan Command
-	rpc_port int
+	rpc_port string
 mut:
 	clients []net.TcpConn
 }
@@ -31,8 +31,8 @@ pub fn init(config setup.Config) &Actor {
 }
 
 pub fn (mut self Actor) listen() {
-	mut l := net.listen_tcp(net.AddrFamily.ip, ":$self.rpc_port") or {
-		println('error opening rpc port')
+	mut l := net.listen_tcp(net.AddrFamily.ip, '$self.rpc_port') or {
+		println('error opening rpc port $self.rpc_port')
 		return
 	}
 	println('rpc listening $self.rpc_port')

@@ -10,7 +10,7 @@ import strings
 struct AppsvcActor {
 pub:
 	out       chan Command
-	http_port int
+	http_port string
 }
 
 struct Command {
@@ -26,7 +26,7 @@ pub fn setup(config setup.Config) &AppsvcActor {
 }
 
 pub fn (mut self AppsvcActor) listen() {
-	mut l := net.listen_tcp(net.AddrFamily.ip, ":$self.http_port") or {
+	mut l := net.listen_tcp(net.AddrFamily.ip, '$self.http_port') or {
 		println('error opening appsvc port $self.http_port')
 		return
 	}
