@@ -175,11 +175,9 @@ pub fn (mut self Actor) call(method http.Method, api string, body string) ?(map[
 		method: method
 		data: body
 	}
-	config.header.set_custom('Authorization', 'Bearer $self.token') or {
-		return error('call http header err $err')
-	}
+	header := http.new_header(key: .authorization, value: 'Bearer $self.token')
 	url := 'https://$self.host/_matrix/client/r0/$api'
-	resp := http.fetch(url, config) or { return error('$url $err') }
+	resp := http.fetch(method: method, data: body, url: url, header: header) or { return error('$url $err') }
 	println('$method $url $config.data => [$resp.status_code] $resp.text')
 	any := json2.raw_decode(resp.text) ?
 	return any.as_map(), resp.status_code
