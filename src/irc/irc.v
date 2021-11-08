@@ -501,7 +501,7 @@ pub fn (self Channels) find_by_name(name string) ?&Channel {
 	return error('not found')
 }
 
-pub fn (self &IrcActor) find_channel_by_name(nick string, channel_name string) ?&Channel {
+pub fn (mut self IrcActor) find_channel_by_name(nick string, channel_name string) ?&Channel {
 	if ghost := self.puppets.by_nick(nick) {
 		if channel := ghost.channels.find_by_name(channel_name) {
 			return channel
@@ -523,7 +523,7 @@ pub fn (self Puppets) by_network(netname string) []&Puppet {
 	return winners
 }
 
-pub fn (self Puppets) by_nick(nick string) ?&Puppet {
+pub fn (mut self Puppets) by_nick(nick string) ?&Puppet {
 	for mut puppet in self.puppets {
 		p_pup := *puppet
 		if p_pup.nick == nick {
