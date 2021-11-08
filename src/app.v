@@ -845,8 +845,7 @@ pub fn (mut self Main) join_request_matrix(name string, room_id string) JoinRequ
 		db.SqlValue{
 			name: 'name'
 			value: name
-		},
-	])
+		}])
 	return JoinRequestResults.saved
 }
 

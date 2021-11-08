@@ -126,7 +126,7 @@ pub fn (mut self IrcActor) say(network string, nick string, room string, message
 		return .user_not_found
 	}
 	cmd := 'PRIVMSG $room :$message'
-	puppet.write(cmd) or {return .error}
+	puppet.write(cmd) or { return .error }
 	return .good
 }
 
@@ -567,7 +567,7 @@ pub fn (mut self Puppet) nick(nick string) {
 	self.write('NICK $nick') or {}
 }
 
-pub fn (mut self Puppet) write(msg string)? {
+pub fn (mut self Puppet) write(msg string) ? {
 	if mut self.sock is net.TcpConn {
 		println('$self.network $self.nick: $msg')
 		self.sock.write_string(msg + '\n') or {
@@ -577,7 +577,7 @@ pub fn (mut self Puppet) write(msg string)? {
 	} else {
 		errmsg := 'NO SOCK: $self.network $self.nick: dropped $msg'
 		println(errmsg)
-        return error(errmsg)
+		return error(errmsg)
 	}
 }
 
