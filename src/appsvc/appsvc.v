@@ -30,31 +30,29 @@ pub fn (mut self AppsvcActor) listen() {
 		println('error opening appsvc port $self.http_port')
 		return
 	}
-	println('appsvc listening $self.http_port')
 	for {
 		mut conn := l.accept() or { panic('accept() failed: $err') }
 		peer_ip := conn.peer_ip() or { err.msg }
 		mut reader := io.new_buffered_reader(reader: conn)
 		header_lines := read_headerlines(mut reader)
-		if header_lines.len > 0 {
-			response := http.parse_response(header_lines.join('\n')) or { break }
-			println('<- $peer_ip ${header_lines[0]}')
-			if response.header.contains_custom('Content-Length') {
-				self.process_request(response.header, mut reader)
-			}
+		response := http.parse_request(mut reader) or {
+			println('http.parse response failed $err')
+			break
 		}
+
+		if response.header.contains_custom('Content-Length') {
+			self.process_request(response.header, response.data)
+		}
+
 		respond(mut conn, 200, '{}')
 		conn.close() or { println('appsvc socket close err $err') }
 	}
 }
 
-pub fn (mut self AppsvcActor) process_request(headers http.Header, mut reader io.BufferedReader) {
+pub fn (mut self AppsvcActor) process_request(headers http.Header, body string) {
 	len_str := headers.get_custom('Content-Length') or { return }
 	http_body_len := len_str.int()
-	mut body_bytes := []byte{len: int(http_body_len)}
-	read_count := reader.read(mut body_bytes) or { 0 }
-	if read_count > 0 {
-		body := body_bytes.bytestr()
+	if body.len > 0 {
 		if payload := json2.raw_decode(body) {
 			events := payload.as_map()['events'].arr()
 			for evt in events {
@@ -66,7 +64,7 @@ pub fn (mut self AppsvcActor) process_request(headers http.Header, mut reader io
 			println('appsvc body decode error $err')
 		}
 	} else {
-		println('appsvc http body empty. content-length $http_body_len but read $read_count bytes')
+		println('appsvc http body empty. content-length $http_body_len but read $body.len bytes')
 	}
 }
 
