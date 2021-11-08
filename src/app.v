@@ -759,7 +759,10 @@ fn (mut self Main) process_out(id string) {
 							nick: outmsg.name
 						})
 					}
-					.error {}
+					.error {
+						matrix_name := self.name_convert(chat.System.irc, outmsg.name)
+						self.matrix_say(matrix_name, 'irc delivery failed $outmsg.room: $outmsg.message')
+					}
 				}
 			}
 			.matrix {
