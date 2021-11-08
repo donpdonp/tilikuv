@@ -514,10 +514,10 @@ pub fn (mut self Rooms) by_id(room_id string) ?&Room {
 	return error('$room_id not in room list')
 }
 
-pub fn (self Rooms) pointers() []&Room {
+pub fn (mut self Rooms) pointers() []&Room {
 	mut ptrs := []&Room{}
-	for room in self.rooms {
-		ptrs << &room
+	for mut room in self.rooms {
+		ptrs << room
 	}
 	return ptrs
 }
