@@ -126,7 +126,7 @@ pub fn (mut self IrcActor) say(network string, nick string, room string, message
 		return .user_not_found
 	}
 	cmd := 'PRIVMSG $room :$message'
-	puppet.write(cmd)
+	puppet.write(cmd) or {return .error}
 	return .good
 }
 
@@ -248,7 +248,7 @@ pub fn (mut self Puppet) dial() {
 pub fn (mut self Puppet) join(channel string) {
 	println('$self.nick joining $channel')
 	cmd := 'JOIN $channel'
-	self.write(cmd)
+	self.write(cmd) or {}
 }
 
 pub fn (self IrcActor) find_ghost_idx(nick string) int {
@@ -280,9 +280,9 @@ pub fn (mut self IrcActor) connect(mut puppet Puppet) {
 
 pub fn (mut self Puppet) signin() {
 	nick_cmd := 'nick $self.nick'
-	self.write(nick_cmd)
+	self.write(nick_cmd) or {}
 	user_cmd := 'user vbridge b c :full name'
-	self.write(user_cmd)
+	self.write(user_cmd) or {}
 }
 
 pub fn (mut self Puppets) hangup(ircnet &Network) {
@@ -421,7 +421,7 @@ pub fn (self &IrcActor) proto(line string, mut puppet Puppet) string {
 			}
 			'PING' {
 				reply := 'PONG ${parts[1]}'
-				puppet.write(reply)
+				puppet.write(reply) or {}
 			}
 			'PRIVMSG' {
 				mut privmsg := PrivMsg{
@@ -564,10 +564,10 @@ pub fn (self Puppets) by_net_nick(ircnet Network, nick string) ?&Puppet {
 }
 
 pub fn (mut self Puppet) nick(nick string) {
-	self.write('NICK $nick')
+	self.write('NICK $nick') or {}
 }
 
-pub fn (mut self Puppet) write(msg string) {
+pub fn (mut self Puppet) write(msg string)? {
 	if mut self.sock is net.TcpConn {
 		println('$self.network $self.nick: $msg')
 		self.sock.write_string(msg + '\n') or {
@@ -575,7 +575,9 @@ pub fn (mut self Puppet) write(msg string) {
 			self.hangup()
 		}
 	} else {
-		println('NO SOCK: $self.network $self.nick: dropped $msg')
+		errmsg := 'NO SOCK: $self.network $self.nick: dropped $msg'
+		println(errmsg)
+        return error(errmsg)
 	}
 }
 
