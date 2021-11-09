@@ -34,9 +34,8 @@ pub fn (mut self AppsvcActor) listen() {
 		mut conn := l.accept() or { panic('accept() failed: $err') }
 		peer_ip := conn.peer_ip() or { err.msg }
 		mut reader := io.new_buffered_reader(reader: conn)
-		header_lines := read_headerlines(mut reader)
 		response := http.parse_request(mut reader) or {
-			println('http.parse response failed $err')
+			println('appsvc http.parse response failed: $err')
 			break
 		}
 
