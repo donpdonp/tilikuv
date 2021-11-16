@@ -9,7 +9,15 @@ fn test_parse_ping() {
 fn test_parse_251() {
 	irc_msg := ':oragono.test 251 ircvbridge :There are 0 users and 1 invisible on 1 server(s)'
 	parts := parse(irc_msg)
+	println(parts)
 	assert parts.len == 6
+}
+
+fn test_parse_privmsg() {
+	irc_msg := ':Tracey!me@68.178.52.73 PRIVMSG #game1 :ascii escape \u001b[36mcolor' //"\e[COLORmSample Text\e[0m"
+	parts := parse(irc_msg)
+	assert parts.len == 6
+	println(parts[5])
 }
 
 fn test_is_room() {

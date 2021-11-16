@@ -36,6 +36,13 @@ fn test_invite_by() {
 	}
 }
 
+fn test_escape_char() {
+	esc := '"\u001b[36mX"'
+	assert esc.len == 8
+	jstr := json2.raw_decode(esc) or { panic('') }.str()
+	assert jstr.len == 6
+}
+
 fn test_mxn_split() {
 	mxc_url := 'mxc://donp.org/DBKlXYNItaxXzLDEgJwNdKB'
 	server, id := mxc_split(mxc_url)
