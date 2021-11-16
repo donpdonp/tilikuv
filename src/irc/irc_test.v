@@ -22,10 +22,8 @@ fn test_is_room() {
 
 fn test_dial() {
 	mut ircm := setup()
-	mut ircnet := Network{
-		hostname: 'google.com:443'
-	}
-	ircm.dial(mut ircnet, 'nick')
+	hostname := 'google.com:443'
+	dial(hostname, 'nick')
 	assert true
 }
 
