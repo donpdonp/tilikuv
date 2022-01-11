@@ -277,13 +277,13 @@ pub fn (mut self Actor) room_joined_members(room_id string) ?[]string {
 	return members
 }
 
-pub fn (mut self Actor) room_create(room_alias string) ?&Room {
+pub fn (mut self Actor) room_create(room_alias string) ?Room {
 	mut user_data := map[string]json2.Any{}
 	user_data['room_alias_name'] = room_alias
 	user_data['is_direct'] = true
 	params, code := self.call(http.Method.post, 'createRoom', user_data.str()) or { return err }
 	if code == 200 {
-		room := &Room{
+		room := Room{
 			id: params['room_id'].str()
 			name: room_alias
 		}

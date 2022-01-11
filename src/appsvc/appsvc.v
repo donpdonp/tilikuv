@@ -44,7 +44,7 @@ pub fn (mut self AppsvcActor) listen() {
 		}
 
 		respond(mut conn, 200, '{}')
-		conn.close() or { println('appsvc socket close err $err') }
+		conn.close() or { println('appsvc socket close $peer_ip err $err') }
 	}
 }
 

@@ -469,7 +469,7 @@ pub fn nick_parse(full_nick string) []string {
 pub fn parse(line string) []string {
 	mut parts := []string{}
 	mut re := regex.regex_opt(irc.irc_msg_regex) or { panic(err) }
-	re.match_string(line.trim_suffix('\n'))
+	re.match_string(line.trim_string_right('\n'))
 	for g_index := 0; g_index < re.group_count; g_index++ {
 		start, end := re.get_group_bounds_by_id(g_index)
 		if start >= 0 {
