@@ -185,7 +185,11 @@ pub fn (mut self Actor) whoami() ?string {
 		println('whoami fail $err')
 		return error('z')
 	}
-	return kv['user_id'] as string
+	if user_id := kv['user_id'] {
+		return user_id as string
+	} else {
+		return error('missing user_id')
+	}
 }
 
 pub fn split(id string) []string {
@@ -210,9 +214,13 @@ pub fn (mut self Actor) register(user MakeUser) ?string {
 	if 'errcode' in kv {
 		return error('matrix.register() error! $kv')
 	} else {
-		user_id := kv['user_id'] as string
-		self.user_displayname(user_id, user.name) or { println('ERR: $err') }
-		return user_id
+		if user_id_any := kv['user_id'] {
+			user_id := user_id_any as string
+			self.user_displayname(user_id, user.name) or { println('ERR: $err') }
+			return user_id
+		} else {
+			return error('missing user_id')
+		}
 	}
 }
 
@@ -376,9 +384,7 @@ pub fn (mut self Actor) user_displayname(user_id string, displayname string) ?bo
 }
 
 struct RoomAliasErrNotFound {
-pub: // look like IError
-	msg  string
-	code int
+	Error
 }
 
 pub fn (mut self Actor) room_alias(room_alias string) ?&Room {
