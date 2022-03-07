@@ -1,12 +1,12 @@
-.PHONY: run build format
+.PHONY: run format
 
-build: bin
-	v -keepc -showcc -o bin/app src/app.v
+bin/tilikuv: src/**/*.v
+	v -keepc -showcc -o bin/tilikuv src/app.v
 #	v -keepc -showcc -o bin/cli src/cli.v
 bin:
 	mkdir bin
-run: build
-	./bin/app
+run: bin/tilikuv
+	./bin/tilikuv
 format:
 	v fmt -w src
 push:
