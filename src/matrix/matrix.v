@@ -101,7 +101,7 @@ pub fn (mut self Actor) setup() {
 		self.conn_state = ConnState.connected
 		self.cin <- Payload(Connect{})
 	} else {
-		println('matrix setup failed. please verify the matrix_host and as_token in config.json')
+		println('matrix setup failed: $err')
 	}
 }
 
@@ -188,7 +188,15 @@ pub fn (mut self Actor) whoami() ?string {
 	if user_id := kv['user_id'] {
 		return user_id as string
 	} else {
-		return error('missing user_id')
+		mut errstr := ''
+		if kv.keys().contains('errcode') {
+			errcode := kv['errcode'] as string
+			errstr = match errcode {
+				'M_UNKNOWN_TOKEN' { "as_token rejected by $self.host"}
+				else { kv['error'] as string }
+			}
+		}
+		return error(errstr)
 	}
 }
 
