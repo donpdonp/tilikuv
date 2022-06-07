@@ -2,7 +2,8 @@ vbridge - matrix <-> irc chat bridge
 
 # setup
 
-
 # establish a bridge
 
-
+#TODO
+* timestamp entries on receipt, so replay can include the correct time
+* replay algo: if post success, try the next one immediately

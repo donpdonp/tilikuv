@@ -801,7 +801,7 @@ fn (mut self Main) process_out(id string) {
 						}
 					}
 				} else {
-					println('listen_out matrix.joined_rooms.find_room_by_id failed: $err.msg dropped: $outmsg.message ')
+					println('listen_out matrix.joined_rooms.find_room_by_id failed: $err.msg() dropped: $outmsg.message ')
 					println('process_out queue.delete($id)')
 					self.chat.queue.delete(id)
 				}

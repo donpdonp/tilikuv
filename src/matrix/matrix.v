@@ -175,15 +175,14 @@ pub fn (mut self Actor) call(method http.Method, api string, body string) ?(map[
 	resp := http.fetch(method: method, data: body, url: url, header: header) or {
 		return error('$url $err')
 	}
-	println('$method $url ($body.len) $body => [$resp.status_code] $resp.text')
-	any := json2.raw_decode(resp.text) ?
+	println('$method $url ($body.len) $body => [$resp.status_code] $resp.body')
+	any := json2.raw_decode(resp.body) ?
 	return any.as_map(), resp.status_code
 }
 
 pub fn (mut self Actor) whoami() ?string {
 	kv, _ := self.call_get('account/whoami') or {
-		println('whoami fail $err')
-		return error('z')
+		return error(err.msg())
 	}
 	if user_id := kv['user_id'] {
 		return user_id as string
