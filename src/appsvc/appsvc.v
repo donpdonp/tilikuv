@@ -7,13 +7,13 @@ import setup
 import x.json2
 import strings
 
-struct AppsvcActor {
+pub struct AppsvcActor {
 pub:
 	out       chan Command
 	http_port string
 }
 
-struct Command {
+pub struct Command {
 pub:
 	data map[string]json2.Any
 }

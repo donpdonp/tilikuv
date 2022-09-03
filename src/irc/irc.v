@@ -13,7 +13,7 @@ const (
 	irc_extra_regex = r'(\S*)(\s+:?([^:]+))?$'
 )
 
-struct IrcActor {
+pub struct IrcActor {
 pub:
 	out chan chat.Say
 	cin chan Payload
@@ -79,12 +79,12 @@ pub mut:
 	joined bool
 }
 
-struct Networks {
+pub struct Networks {
 pub mut:
 	networks []&Network
 }
 
-struct Puppets {
+pub struct Puppets {
 pub mut:
 	puppets []&Puppet
 }
@@ -92,7 +92,7 @@ pub mut:
 type SockOrNone = net.TcpConn | util.None
 
 [heap]
-struct Puppet {
+pub struct Puppet {
 pub mut:
 	nick     string
 	state    ConnState = ConnState.disconnected

@@ -37,7 +37,7 @@ pub:
 	room string
 }
 
-struct Actor {
+pub struct Actor {
 pub:
 	out   chan Say
 	cin   chan Payload

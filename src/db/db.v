@@ -4,7 +4,7 @@ import sqlite
 import setup
 import log
 
-struct Db {
+pub struct Db {
 	sqlite sqlite.DB
 mut:
 	log log.Log

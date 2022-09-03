@@ -1,4 +1,4 @@
 module msg
 
-struct MatrixMsg {
+pub struct MatrixMsg {
 }

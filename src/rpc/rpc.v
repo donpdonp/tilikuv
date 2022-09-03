@@ -6,7 +6,7 @@ import json
 import setup
 import matrix
 
-struct Actor {
+pub struct Actor {
 pub:
 	out      chan Command
 	rpc_port string

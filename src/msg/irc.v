@@ -1,4 +1,4 @@
 module msg
 
-struct IrcMsg {
+pub struct IrcMsg {
 }
