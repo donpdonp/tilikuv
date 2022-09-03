@@ -176,14 +176,12 @@ pub fn (mut self Actor) call(method http.Method, api string, body string) ?(map[
 		return error('$url $err')
 	}
 	println('$method $url ($body.len) $body => [$resp.status_code] $resp.body')
-	any := json2.raw_decode(resp.body) ?
+	any := json2.raw_decode(resp.body)?
 	return any.as_map(), resp.status_code
 }
 
 pub fn (mut self Actor) whoami() ?string {
-	kv, _ := self.call_get('account/whoami') or {
-		return error(err.msg())
-	}
+	kv, _ := self.call_get('account/whoami') or { return error(err.msg()) }
 	if user_id := kv['user_id'] {
 		return user_id as string
 	} else {
@@ -191,7 +189,7 @@ pub fn (mut self Actor) whoami() ?string {
 		if kv.keys().contains('errcode') {
 			errcode := kv['errcode'] as string
 			errstr = match errcode {
-				'M_UNKNOWN_TOKEN' { "as_token rejected by $self.host"}
+				'M_UNKNOWN_TOKEN' { 'as_token rejected by $self.host' }
 				else { kv['error'] as string }
 			}
 		}
@@ -217,7 +215,7 @@ pub fn (mut self Actor) register(user MakeUser) ?string {
 	username := split(user.user_id)[1]
 	user_data['username'] = username
 	user_data['type'] = 'm.login.application_service'
-	kv, _ := self.call(http.Method.post, 'register', user_data.str()) ?
+	kv, _ := self.call(http.Method.post, 'register', user_data.str())?
 	if 'errcode' in kv {
 		return error('matrix.register() error! $kv')
 	} else {
@@ -242,7 +240,7 @@ pub fn (mut self Actor) sync_user(user_id string) string {
 }
 
 pub fn (mut self Actor) joined_rooms() ?[]string {
-	resp, _ := self.call_get('joined_rooms') ?
+	resp, _ := self.call_get('joined_rooms')?
 	return resp['joined_rooms'].arr().map(it.str())
 }
 
@@ -277,7 +275,7 @@ pub fn (mut self Actor) room_leave(room_id string) ?(map[string]json2.Any, int) 
 
 // not implemented in synapse until 1.36 (api r0.6.1)
 pub fn (mut self Actor) room_aliases(room_id string) ?[]string {
-	params, _ := self.call_get('rooms/$room_id/aliases') ?
+	params, _ := self.call_get('rooms/$room_id/aliases')?
 	return params['aliases'].arr().map(it.str())
 }
 
@@ -309,7 +307,7 @@ pub fn (mut self Actor) room_create(room_alias string) ?Room {
 }
 
 pub fn (mut self Actor) room_state(room_id string) ?string {
-	self.call_get('rooms/$room_id/state') ?
+	self.call_get('rooms/$room_id/state')?
 	return ''
 }
 
@@ -369,14 +367,14 @@ pub fn (mut self Actor) room_say_as(user_id string, room Room, msg string) RoomS
 pub fn (mut self Actor) user_presence(user_id string, status string) ?string {
 	mut evt := map[string]json2.Any{}
 	evt['presence'] = status
-	self.call(http.Method.put, 'presence/$user_id/status', evt.str()) ?
+	self.call(http.Method.put, 'presence/$user_id/status', evt.str())?
 	return ''
 }
 
 pub fn (mut self Actor) user_display_name(user_id string) ?string {
 	escaped_user_id := urllib.path_escape(user_id)
 	url := 'profile/$escaped_user_id/displayname?user_id=$escaped_user_id'
-	params, _ := self.call_get(url) ?
+	params, _ := self.call_get(url)?
 	displayname := params['displayname'].str()
 	return displayname
 }
@@ -386,7 +384,7 @@ pub fn (mut self Actor) user_displayname(user_id string, displayname string) ?bo
 	escaped_user_id := urllib.path_escape(user_id)
 	url := 'profile/$escaped_user_id/displayname?user_id=$escaped_user_id'
 	name_data['displayname'] = displayname
-	_, status := self.call(http.Method.put, url, name_data.str()) ?
+	_, status := self.call(http.Method.put, url, name_data.str())?
 	return status == 200
 }
 
@@ -396,7 +394,7 @@ struct RoomAliasErrNotFound {
 
 pub fn (mut self Actor) room_alias(room_alias string) ?&Room {
 	if room_alias.starts_with('#') {
-		ret, code := self.call_get('directory/room/' + urllib.path_escape(room_alias)) ?
+		ret, code := self.call_get('directory/room/' + urllib.path_escape(room_alias))?
 		if code == 404 {
 			return IError(&RoomAliasErrNotFound{})
 		} else {

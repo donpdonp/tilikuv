@@ -105,7 +105,7 @@ pub fn (mut self Queue) delete(id string) {
 }
 
 pub fn (mut self Queue) next() ?Say {
-	id := self.next_id() ?
+	id := self.next_id()?
 	return self.entries[id]
 }
 

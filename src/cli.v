@@ -35,8 +35,8 @@ fn parse(words []string) map[string]string {
 }
 
 fn connect(host string) ?&net.TcpConn {
-	conn := net.dial_tcp(host) ?
-	conn.peer_addr() ? // dial_tcp always works so use this
+	conn := net.dial_tcp(host)?
+	conn.peer_addr()? // dial_tcp always works so use this
 	return conn
 }
 
