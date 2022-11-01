@@ -7,6 +7,7 @@ import time
 import db
 import chat
 import util
+import strings
 
 const (
 	irc_msg_regex   = r'^([^ ]+) ([^ ]+)( :?([^ ]+)( :?(.*))?)?'
@@ -424,6 +425,7 @@ pub fn (self &IrcActor) proto(line string, mut puppet Puppet) string {
 				puppet.write(reply) or {}
 			}
 			'PRIVMSG' {
+				// [':donpdonp!~vbridge@64.62.134.149', 'PRIVMSG', ' #robots :hi there', '#robots', ' :hi there', 'hi there']
 				mut privmsg := PrivMsg{
 					channel: parts[3]
 					puppet: puppet
@@ -435,7 +437,7 @@ pub fn (self &IrcActor) proto(line string, mut puppet Puppet) string {
 					match ctcp_parts[0] {
 						'VERSION' {}
 						'ACTION' {
-							privmsg.message = parts[5] // keep ctcp protocol
+							privmsg.message = color_strip(parts[5])
 							self.cin <- Payload(privmsg)
 						}
 						else {
@@ -457,6 +459,23 @@ pub fn (self &IrcActor) proto(line string, mut puppet Puppet) string {
 		}
 	}
 	return ''
+}
+
+pub fn color_strip(msg string) string {
+	// https://modern.ircdocs.horse/formatting.html
+	mut new_msg := strings.new_builder(msg.len)
+	runes := msg.runes()
+	msg_len := runes.len
+	for idx := 0; idx < msg_len; idx += 1 {
+		chr := runes[idx]
+		if chr == 0x03 { // start color
+			// idx++
+			// idx++
+		} else {
+			new_msg.write_rune(chr)
+		}
+	}
+	return new_msg.str()
 }
 
 pub fn nick_parse(full_nick string) []string {
