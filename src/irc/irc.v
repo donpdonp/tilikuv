@@ -437,7 +437,7 @@ pub fn (self &IrcActor) proto(line string, mut puppet Puppet) string {
 					match ctcp_parts[0] {
 						'VERSION' {}
 						'ACTION' {
-							privmsg.message = color_strip(parts[5])
+							privmsg.message = parts[5]
 							self.cin <- Payload(privmsg)
 						}
 						else {
@@ -446,7 +446,7 @@ pub fn (self &IrcActor) proto(line string, mut puppet Puppet) string {
 						}
 					}
 				} else {
-					privmsg.message = parts[5]
+					privmsg.message = color_strip(parts[5])
 					self.cin <- Payload(privmsg)
 				}
 			}
@@ -469,8 +469,8 @@ pub fn color_strip(msg string) string {
 	for idx := 0; idx < msg_len; idx += 1 {
 		chr := runes[idx]
 		if chr == 0x03 { // start color
-			// idx++
-			// idx++
+			idx++
+			idx++
 		} else {
 			new_msg.write_rune(chr)
 		}
